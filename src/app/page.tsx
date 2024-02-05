@@ -1,52 +1,65 @@
+"use client";
+import { useForm } from "react-hook-form";
+
 function HomePage() {
+  const { register, handleSubmit } = useForm();
+
   return (
     <div>
-      <form>
+      <form
+        onSubmit={handleSubmit((data) => {
+          console.log(data);
+        })}
+      >
         <label htmlFor="name">Name</label>
         <input
           type="text"
           id="name"
-          name="name"
           placeholder="Write your name"
+          {...register("name")}
         />
 
         <label htmlFor="email">Email</label>
         <input
           type="email"
           id="email"
-          name="email"
           placeholder="Write your Email"
+          {...register("email")}
         />
 
         <label htmlFor="password">Password</label>
         <input
           type="password"
           id="password"
-          name="password"
           placeholder="*********"
+          {...register("password")}
         />
 
         <label htmlFor="confirmPassword">Confirm Password</label>
         <input
           type="password"
           id="confirmPassword"
-          name="confirmPassword"
           placeholder="*********"
+          {...register("confirmPassword")}
         />
 
         <label htmlFor="age">Age</label>
-        <input type="number" id="age" name="age" placeholder="example: 38" />
+        <input
+          type="number"
+          id="age"
+          placeholder="example: 38"
+          {...register("age")}
+        />
 
         <label htmlFor="country">Country</label>
-        <select name="country" id="country">
+        <select id="country" {...register("country")}>
           <option value="argentina">Argentina</option>
           <option value="colombia">Colombia</option>
           <option value="mexico">Mexico</option>
           <option value="brazil">Brazil</option>
         </select>
-        <div className="bg-sky-400 px-4 py-2 text-center text-black text-2xl hover:bg-sky-500 gap-2">
-          <button type="submit">Submit</button>
-        </div>
+
+        <button type="submit">Submit</button>
       </form>
     </div>
   );
@@ -54,4 +67,4 @@ function HomePage() {
 
 export default HomePage;
 
-//00:06
+//00:12
